@@ -68,8 +68,8 @@ class CachedImportTemplateTag extends ImportTemplateTag {
 
       // get the cache manager
       /* @var $cMF CacheManagerFabric */
-      $cMF = & $this->getServiceObject('APF\tools\cache\CacheManagerFabric');
-      $cM = & $cMF->getCacheManager($cacheConfig);
+      $cMF = $this->getServiceObject('APF\tools\cache\CacheManagerFabric');
+      $cM = $cMF->getCacheManager($cacheConfig);
 
       // clear the cache if desired
       if (isset($_REQUEST['clearcache']) && $_REQUEST['clearcache'] == 'true') {
@@ -107,8 +107,8 @@ class CachedImportTemplateTag extends ImportTemplateTag {
 
          // get the cache manager
          /* @var $cMF CacheManagerFabric */
-         $cMF = & $this->getServiceObject('APF\tools\cache\CacheManagerFabric');
-         $cM = & $cMF->getCacheManager($cacheConfig);
+         $cMF = $this->getServiceObject('APF\tools\cache\CacheManagerFabric');
+         $cM = $cMF->getCacheManager($cacheConfig);
 
          // generate output and cache it
          $output = parent::transform();

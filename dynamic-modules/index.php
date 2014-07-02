@@ -26,7 +26,7 @@ $writer = $logger->getLogWriter(\APF\core\registry\Registry::retrieve('APF\core'
 $logger->addLogWriter('mysqli', clone $writer);
 
 /* @var $fc Frontcontroller */
-$fc = &Singleton::getInstance('APF\core\frontcontroller\Frontcontroller');
+$fc = Singleton::getInstance('APF\core\frontcontroller\Frontcontroller');
 $fc->setContext('app-context');
 $fc->registerAction('EXAMPLE\dynamicmodules\core\biz', 'modules-init');
 echo $fc->start('EXAMPLE\dynamicmodules\site\pres\templates', 'main');

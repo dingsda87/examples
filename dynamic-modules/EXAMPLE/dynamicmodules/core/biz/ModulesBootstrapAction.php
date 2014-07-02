@@ -16,7 +16,7 @@ class ModulesBootstrapAction extends AbstractFrontcontrollerAction {
    public function run() {
 
       /* @var $model DynamicModulesModel */
-      $model = & Singleton::getInstance('EXAMPLE\dynamicmodules\core\biz\DynamicModulesModel');
+      $model = Singleton::getInstance('EXAMPLE\dynamicmodules\core\biz\DynamicModulesModel');
 
       $conn = null;
       try {
@@ -24,7 +24,7 @@ class ModulesBootstrapAction extends AbstractFrontcontrollerAction {
          $moduleName = RequestHandler::getValue('mod');
 
          /* @var $conn MySQLiHandler */
-         $conn = & $this->getServiceObject('APF\core\database\ConnectionManager')->getConnection('modules');
+         $conn = $this->getServiceObject('APF\core\database\ConnectionManager')->getConnection('modules');
 
          $select = 'SELECT * FROM modules WHERE `key` = \'' . $conn->escapeValue($moduleName) . '\'';
          $result = $conn->executeTextStatement($select);
@@ -37,7 +37,7 @@ class ModulesBootstrapAction extends AbstractFrontcontrollerAction {
             $model->setContentView($data['content_template']);
 
             // execute the fc action for the desired module
-            $action = & $this->getServiceObject($data['namespace'] . '\biz\\' . $data['fc_action']);
+            $action = $this->getServiceObject($data['namespace'] . '\biz\\' . $data['fc_action']);
             /* @var $action AbstractFrontcontrollerAction */
             $action->setActionNamespace($data['namespace']);
             $action->setActionName($data['fc_action']);

@@ -21,7 +21,7 @@ $iniProvider->setOmitConfigSubFolder(true);
 $iniProvider->setOmitContext(true);
 
 /* @var $fC Frontcontroller */
-$fC = & Singleton::getInstance('APF\core\frontcontroller\Frontcontroller');
+$fC = Singleton::getInstance('APF\core\frontcontroller\Frontcontroller');
 echo $fC->start('EXAMPLE\vbc\pres\templates', 'main');
 
 // display benchmark report if desired

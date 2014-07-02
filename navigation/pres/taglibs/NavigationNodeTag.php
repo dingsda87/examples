@@ -44,7 +44,7 @@ class NavigationNodeTag extends Document {
       }
 
       $content = $this->getContent();
-      $children = & $this->getChildren();
+      $children = $this->getChildren();
       foreach ($children as $objectId => $DUMMY) {
          if ($children[$objectId] instanceof NavigationContentTag) {
             // fill the <navi:content /> place holder if we get him

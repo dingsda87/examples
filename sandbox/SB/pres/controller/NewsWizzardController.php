@@ -16,7 +16,7 @@ class NewsWizzardController extends BaseDocumentController {
    public function transformContent() {
 
       // step 1: create database config file
-      $formNewConfig = & $this->getForm('new-db-config');
+      $formNewConfig = $this->getForm('new-db-config');
       if ($formNewConfig->isSent() && $formNewConfig->isValid()) {
 
          // rerieve the form values
@@ -55,7 +55,7 @@ class NewsWizzardController extends BaseDocumentController {
       $configAvailable = false;
       try {
          $config = $this->getConfiguration('APF\core\database', 'connections.ini');
-         $tmpl = & $this->getTemplate('db-config-exists');
+         $tmpl = $this->getTemplate('db-config-exists');
 
          $section = $config->getSection(self::$CONFIG_SECTION_NAME);
          if ($section == null) {
@@ -94,7 +94,7 @@ class NewsWizzardController extends BaseDocumentController {
       $databaseLayoutInitialized = false;
       if ($configAvailable) {
 
-         $formInitDb = & $this->getForm('init-db');
+         $formInitDb = $this->getForm('init-db');
          try {
             /* @var $connMgr ConnectionManager */
             $connMgr = $this->getServiceObject('APF\core\database\ConnectionManager');
@@ -119,7 +119,7 @@ class NewsWizzardController extends BaseDocumentController {
 
                   // setup database layout
                   /* @var $setup GenericORMapperManagementTool */
-                  $setup = & $this->getServiceObject('APF\modules\genericormapper\data\tools\GenericORMapperManagementTool');
+                  $setup = $this->getServiceObject('APF\modules\genericormapper\data\tools\GenericORMapperManagementTool');
                   $setup->addMappingConfiguration('APF\extensions\news', 'news');
                   $setup->addRelationConfiguration('APF\extensions\news', 'news');
                   $setup->setConnectionName(self::$CONFIG_SECTION_NAME);
@@ -131,7 +131,7 @@ class NewsWizzardController extends BaseDocumentController {
                }
             }
          } catch (\Exception $e) {
-            $tmplDbConnErr = & $this->getTemplate('db-conn-error');
+            $tmplDbConnErr = $this->getTemplate('db-conn-error');
             $tmplDbConnErr->setPlaceHolder('exception', $e->getMessage());
             $tmplDbConnErr->transformOnPlace();
          }

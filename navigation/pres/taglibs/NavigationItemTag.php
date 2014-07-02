@@ -19,7 +19,7 @@ class NavigationItemTag extends Document {
 
    public function getOutput(NavigationNode $node) {
       $content = $this->getContent();
-      $children = & $this->getChildren();
+      $children = $this->getChildren();
       foreach ($children as $objectId => $DUMMY) {
          if ($children[$objectId] instanceof ItemTemplateContentTag) {
             // fill the <item:content /> place holder if we get him

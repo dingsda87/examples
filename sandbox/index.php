@@ -49,7 +49,7 @@ $sqlProvider->setOmitConfigSubFolder(true);
 ConfigurationManager::registerProvider('sql', $sqlProvider);
 
 // create the sandbox page
-$fC = & Singleton::getInstance('APF\core\frontcontroller\Frontcontroller');
+$fC =Singleton::getInstance('APF\core\frontcontroller\Frontcontroller');
 /* @var $fC Frontcontroller */
 $fC->setContext($context);
 $fC->setLanguage($lang);
@@ -80,7 +80,7 @@ try {
 echo $fC->start('SB\pres\templates', 'main');
 
 /* @var $t APF\core\benchmark\BenchmarkTimer */
-$t = & Singleton::getInstance('APF\core\benchmark\BenchmarkTimer');
+$t =Singleton::getInstance('APF\core\benchmark\BenchmarkTimer');
 echo '<!--' . $t->getTotalTime() . '-->';
 if (isset($_REQUEST['benchmark']) && $_REQUEST['benchmark'] == 'true') {
    echo $t->createReport();
